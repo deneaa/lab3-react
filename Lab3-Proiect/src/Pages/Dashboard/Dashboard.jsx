@@ -4,10 +4,10 @@ import styles from "./Dashboard.module.css";
 import Product from "../../components/Product/Product";
 import Header from "../../components/Header/Header";
 
-const Dashboard = () => {
+const Dashboard = ({goToPage}) => {
   return (
     <div>
-      <Header />
+      <Header onNavigate={goToPage} />
       <div className={styles.main}>
         <div className={styles.productsGrid}>
           {products.map((product) => (

@@ -1,9 +1,14 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 const useNavigation = (pages) => {
   const [currentPage, setCurrentPage] = useState(pages[0]);
 
-  const navigate = (page) => setCurrentPage(page);
+  const navigate = (page) => {
+    if (pages.includes(page)) {
+      setCurrentPage(page);
+    }
+  };
+
   return { currentPage, navigate };
 };
 

@@ -1,17 +1,32 @@
 import React from "react";
 import useNavigation from "./Hooks/useNavigation";
-import Dashboard from "./Pages/Dashboard/Dashboard";
 
-const pages = ["Dashboard", "Orders", "Tracking", "Cart"];
+import Dashboard from "./Pages/Dashboard/Dashboard";
+import Orders from "./Pages/Orders/Orders";
+import Tracking from "./Pages/Tracking/Tracking";
+import Checkout from "./Pages/Checkout/Checkout";
+
+const pages = ["Dashboard", "Orders", "Tracking", "Checkout"];
 
 const App = () => {
   const { currentPage, navigate } = useNavigation(pages);
-  let page;
-  switch (currentPage) {
-    case "Dashboard":
-      page = <Dashboard />;
-  }
-  return <div>{page}</div>;
+
+  const renderPage = () => {
+    switch (currentPage) {
+      case "Dashboard":
+        return <Dashboard goToPage={navigate} />;
+      case "Orders":
+        return <Orders goToPage={navigate} />;
+      case "Tracking":
+        return <Tracking goToPage={navigate} />;
+      case "Checkout":
+        return <Checkout onNavigate={navigate} />;
+      default:
+        return <Dashboard goToPage={navigate} />;
+    }
+  };
+
+  return <div>{renderPage()}</div>;
 };
 
 export default App;

@@ -8,7 +8,10 @@ const Header = ({ cartQuantity = 0, onNavigate }) => {
         <a
           href="#"
           className={styles.headerLink}
-          onClick={() => onNavigate && onNavigate("home")}
+          onClick={(e) => {
+            e.preventDefault();
+            onNavigate && onNavigate("Dashboard");
+          }}
         >
           <img
             className={styles.amazonLogo}
@@ -24,12 +27,7 @@ const Header = ({ cartQuantity = 0, onNavigate }) => {
       </div>
 
       <div className={styles.amazonHeaderMiddleSection}>
-        <input
-          className={styles.searchBar}
-          type="text"
-          placeholder="Search"
-        />
-
+        <input className={styles.searchBar} type="text" placeholder="Search" />
         <button className={styles.searchButton}>
           <img
             className={styles.searchIcon}
@@ -43,7 +41,10 @@ const Header = ({ cartQuantity = 0, onNavigate }) => {
         <a
           href="#"
           className={`${styles.ordersLink} ${styles.headerLink}`}
-          onClick={() => onNavigate && onNavigate("orders")}
+          onClick={(e) => {
+            e.preventDefault();
+            onNavigate && onNavigate("Orders");
+          }}
         >
           <span className={styles.returnsText}>Returns</span>
           <span className={styles.ordersText}>& Orders</span>
@@ -52,7 +53,10 @@ const Header = ({ cartQuantity = 0, onNavigate }) => {
         <a
           href="#"
           className={`${styles.cartLink} ${styles.headerLink}`}
-          onClick={() => onNavigate && onNavigate("checkout")}
+          onClick={(e) => {
+            e.preventDefault();
+            onNavigate && onNavigate("Checkout");
+          }}
         >
           <img
             className={styles.cartIcon}
